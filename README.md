@@ -3,14 +3,14 @@ Code for Researcher (2019), Alien Forms for Alien Language
 
 The code released contains two folders. 
 
-##Data_Analysis
+## Data_Analysis
 
 - AlienFormsAnalysis.Rmd: an RMarkdown document which gives a more detailed explanation of the data file, and goes through the models used for the analysis
 - calcEdgeDistances.py: This file shows how the CharError values were calculated, by determining the Euclidean distance from the nearest edge of the target polygon. Note that it is advisable to use Python3 for this for character encoding reasons (many of the unicode characters produced by participants run into issues in Python 2)
 - charares.json: This is a json file with information about each Ferro Character, required for the calcEdgeDistances.py
 - FerroSeqData_Long.tsv: data from the experiment in long form (i.e., each line is one *character* produced by a participant, even thought there were three characters per sequence (and 12 sequences per participant). Note that this file is tab separated; participants could use the ',' character as part of the experiment.
 
-##PaletteCode
+## PaletteCode
 
 This folder contains HTML, JavaScript, and CSS for the palette at the centre of the task. It is set up to be deployed directly to Heroku - for further information, see here: https://devcenter.heroku.com/articles/getting-started-with-python. 
 
