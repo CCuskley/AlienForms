@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Strange Sequences</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/ferrostyle.css">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	  	<script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+	  	<script language="javascript" src="../static/js/p5/p5.dom.js"></script>
+	  	<script language="javascript" src="../static/js/p5/p5.play.js"></script>
+	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+		<script language="javascript" type="text/javascript" src="../static/js/palette.js"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<!-- Modal -->
+			<div class="modal fade" id="startModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLongTitle">Alien Form Space Palette</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <p>This is a demo of the palette from Researcher (2019). The task from this paper involved learning sequences of Ferros, and <a href="https://bit.ly/FerroSeqDemo" target="_blank">you can try it out in full here</a>. However, note that this code uses a different font - the Ferro font is available from the designer, <a href="http://wordsarepictures.co.uk/" target="_blank">Craig Ward</a>. If you wish to use it for scholarly research, you can obtain it for free by contacting Researcher.</p>
+					<p>This palette can be adapted for research, or just for fun under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY NC SA 4.0</a> license. Please make sure to attribute the source and share what you make!</p>
+					<p><b>You 'speak' Ferro using the mouse.</b> Move the green dot around the blue square to change the symbol. When you see a symbol you want to 'say', click inside the blue box to write it to the field.</p>
+					<p>The goal of the task from Researcher (2019) was to copy sequences of three forms. As such, the targets are three forms long, and the field they write to is limited to three forms. The sequences being copied here are random. Toggle the options on the top of the page to show or hide hints, show or hide feedback, or have the sequences fade.</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Start</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<div id="taskContainer" class="stage center-block">
+				<div class="d-flex flex-row justify-content-around">
+					<button id="showHints" type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Show Hints</button>
+					<button id="showFeedback" type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Show Feedback</button>
+					<button id="doFade" type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Fade Sequences</button>
+					<button id="showInfo" type="button" class="btn btn-outline-info" data-toggle="button" aria-pressed="false" autocomplete="off">Show Info</button>
+
+				</div>
+				<hr>
+				<div class="d-flex flex-row justify-content-between align-items-center">
+					<div class="col-md-3">
+						<h4>Target:</h4>
+						<div class="ferroDisplay text-center" id="targetSeq">xb3</div>
+					</div>
+					<div class="col-md-4 ferroPalette" id="paletteContainer"></div>
+					<div class="col-md-2">
+						<div class="percentAccuracy feedbackDisplay" style="display:none">
+							<p class="feedbackText text-center"><span style="color:#6464d6">You</span> <span style="color:#e16419">Target</span></p>
+			  				<p class="feedbackText text-center">Score: <span id="accValue">24</span>%</p>
+			  			</div>
+			  			<div class="perfectSeq feedbackDisplay" style="display:none">
+			  				<p class="feedbackText text-center"><span class="fa fa-check" style="color:green"></span> Perfect!</p>
+			  			</div>
+			  			<div class="wrongSeq feedbackDisplay" style="display:none">
+			  				<p class="feedbackText text-center"><span class="fa fa-times" style="color:red"></span> Not quite!</p>
+			  			</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="row">
+							<div class="col">
+			  					<span id = "output" class="ferroOutput ferroDisplay"></span>
+			  					<span id = "ferroCursor" class="blinking-cursor">|</span>
+			  				</div>
+			  			</div>
+			  			<div class="row">
+			  				<div class="col">
+			  					<button class="btn btn-light" id="submitSeq">Submit</button>
+			  					<button class="btn btn-success" id="newSeq" style="display:none">Next</button>
+			  				</div>
+			  			</div>
+			  		</div>
+				</div>
+			</div>
+	  	</div>
+	</body>
+</html>

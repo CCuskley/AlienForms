@@ -1,0 +1,554 @@
+{
+    "$": {
+        "contRank": 21, 
+        "nodeRank": 29
+    }, 
+    "(": {
+        "contRank": 12, 
+        "nodeRank": 14
+    }, 
+    ",": {
+        "contRank": 93, 
+        "nodeRank": 97
+    }, 
+    "0": {
+        "contRank": 76, 
+        "nodeRank": 67
+    }, 
+    "4": {
+        "contRank": 24, 
+        "nodeRank": 78
+    }, 
+    "8": {
+        "contRank": 118, 
+        "nodeRank": 68
+    }, 
+    "<": {
+        "contRank": 131, 
+        "nodeRank": 82
+    }, 
+    "@": {
+        "contRank": 115, 
+        "nodeRank": 92
+    }, 
+    "\u00c3": {
+        "contRank": 123, 
+        "nodeRank": 83
+    }, 
+    "D": {
+        "contRank": 65, 
+        "nodeRank": 90
+    }, 
+    "\u00c7": {
+        "contRank": 122, 
+        "nodeRank": 115
+    }, 
+    "H": {
+        "contRank": 89, 
+        "nodeRank": 127
+    }, 
+    "\u00cb": {
+        "contRank": 128, 
+        "nodeRank": 72
+    }, 
+    "L": {
+        "contRank": 91, 
+        "nodeRank": 124
+    }, 
+    "\u00cf": {
+        "contRank": 100, 
+        "nodeRank": 74
+    }, 
+    "P": {
+        "contRank": 109, 
+        "nodeRank": 96
+    }, 
+    "\u00d3": {
+        "contRank": 37, 
+        "nodeRank": 51
+    }, 
+    "T": {
+        "contRank": 101, 
+        "nodeRank": 58
+    }, 
+    "\u00d7": {
+        "contRank": 35, 
+        "nodeRank": 24
+    }, 
+    "X": {
+        "contRank": 110, 
+        "nodeRank": 122
+    }, 
+    "\u00db": {
+        "contRank": 11, 
+        "nodeRank": 10
+    }, 
+    "\u00df": {
+        "contRank": 1, 
+        "nodeRank": 4
+    }, 
+    "\u00e3": {
+        "contRank": 7, 
+        "nodeRank": 30
+    }, 
+    "d": {
+        "contRank": 45, 
+        "nodeRank": 69
+    }, 
+    "\u00e7": {
+        "contRank": 20, 
+        "nodeRank": 9
+    }, 
+    "h": {
+        "contRank": 61, 
+        "nodeRank": 84
+    }, 
+    "\u00eb": {
+        "contRank": 49, 
+        "nodeRank": 41
+    }, 
+    "l": {
+        "contRank": 87, 
+        "nodeRank": 55
+    }, 
+    "\u00ef": {
+        "contRank": 13, 
+        "nodeRank": 2
+    }, 
+    "p": {
+        "contRank": 79, 
+        "nodeRank": 73
+    }, 
+    "\u00f3": {
+        "contRank": 31, 
+        "nodeRank": 32
+    }, 
+    "t": {
+        "contRank": 77, 
+        "nodeRank": 128
+    }, 
+    "x": {
+        "contRank": 64, 
+        "nodeRank": 106
+    }, 
+    "#": {
+        "contRank": 19, 
+        "nodeRank": 13
+    }, 
+    "'": {
+        "contRank": 17, 
+        "nodeRank": 20
+    }, 
+    "+": {
+        "contRank": 137, 
+        "nodeRank": 137
+    }, 
+    "/": {
+        "contRank": 80, 
+        "nodeRank": 56
+    }, 
+    "3": {
+        "contRank": 34, 
+        "nodeRank": 132
+    }, 
+    "7": {
+        "contRank": 105, 
+        "nodeRank": 86
+    }, 
+    ";": {
+        "contRank": 135, 
+        "nodeRank": 99
+    }, 
+    "?": {
+        "contRank": 68, 
+        "nodeRank": 91
+    }, 
+    "\u00c0": {
+        "contRank": 116, 
+        "nodeRank": 93
+    }, 
+    "C": {
+        "contRank": 73, 
+        "nodeRank": 71
+    }, 
+    "\u00c4": {
+        "contRank": 130, 
+        "nodeRank": 105
+    }, 
+    "G": {
+        "contRank": 74, 
+        "nodeRank": 53
+    }, 
+    "\u00c8": {
+        "contRank": 120, 
+        "nodeRank": 80
+    }, 
+    "K": {
+        "contRank": 83, 
+        "nodeRank": 110
+    }, 
+    "\u00cc": {
+        "contRank": 99, 
+        "nodeRank": 95
+    }, 
+    "O": {
+        "contRank": 90, 
+        "nodeRank": 130
+    }, 
+    "\u00d0": {
+        "contRank": 5, 
+        "nodeRank": 0
+    }, 
+    "S": {
+        "contRank": 60, 
+        "nodeRank": 26
+    }, 
+    "\u00d4": {
+        "contRank": 94, 
+        "nodeRank": 118
+    }, 
+    "W": {
+        "contRank": 103, 
+        "nodeRank": 119
+    }, 
+    "\u00d8": {
+        "contRank": 39, 
+        "nodeRank": 52
+    }, 
+    "\u00dc": {
+        "contRank": 9, 
+        "nodeRank": 15
+    }, 
+    "\u00e0": {
+        "contRank": 2, 
+        "nodeRank": 11
+    }, 
+    "c": {
+        "contRank": 46, 
+        "nodeRank": 87
+    }, 
+    "\u00e4": {
+        "contRank": 4, 
+        "nodeRank": 8
+    }, 
+    "g": {
+        "contRank": 54, 
+        "nodeRank": 77
+    }, 
+    "\u00e8": {
+        "contRank": 36, 
+        "nodeRank": 35
+    }, 
+    "k": {
+        "contRank": 67, 
+        "nodeRank": 112
+    }, 
+    "\u00ec": {
+        "contRank": 42, 
+        "nodeRank": 16
+    }, 
+    "o": {
+        "contRank": 81, 
+        "nodeRank": 134
+    }, 
+    "\u00f0": {
+        "contRank": 18, 
+        "nodeRank": 17
+    }, 
+    "s": {
+        "contRank": 70, 
+        "nodeRank": 103
+    }, 
+    "\u00f4": {
+        "contRank": 38, 
+        "nodeRank": 37
+    }, 
+    "w": {
+        "contRank": 114, 
+        "nodeRank": 117
+    }, 
+    "\"": {
+        "contRank": 22, 
+        "nodeRank": 23
+    }, 
+    "&": {
+        "contRank": 16, 
+        "nodeRank": 21
+    }, 
+    "*": {
+        "contRank": 69, 
+        "nodeRank": 45
+    }, 
+    ".": {
+        "contRank": 85, 
+        "nodeRank": 44
+    }, 
+    "2": {
+        "contRank": 52, 
+        "nodeRank": 98
+    }, 
+    "6": {
+        "contRank": 119, 
+        "nodeRank": 101
+    }, 
+    ":": {
+        "contRank": 126, 
+        "nodeRank": 70
+    }, 
+    ">": {
+        "contRank": 134, 
+        "nodeRank": 126
+    }, 
+    "\u00c1": {
+        "contRank": 133, 
+        "nodeRank": 102
+    }, 
+    "B": {
+        "contRank": 71, 
+        "nodeRank": 129
+    }, 
+    "\u00c5": {
+        "contRank": 121, 
+        "nodeRank": 114
+    }, 
+    "F": {
+        "contRank": 72, 
+        "nodeRank": 42
+    }, 
+    "\u00c9": {
+        "contRank": 129, 
+        "nodeRank": 89
+    }, 
+    "J": {
+        "contRank": 95, 
+        "nodeRank": 75
+    }, 
+    "\u00cd": {
+        "contRank": 113, 
+        "nodeRank": 113
+    }, 
+    "N": {
+        "contRank": 86, 
+        "nodeRank": 120
+    }, 
+    "\u00d1": {
+        "contRank": 32, 
+        "nodeRank": 25
+    }, 
+    "R": {
+        "contRank": 58, 
+        "nodeRank": 31
+    }, 
+    "\u00d5": {
+        "contRank": 41, 
+        "nodeRank": 57
+    }, 
+    "V": {
+        "contRank": 125, 
+        "nodeRank": 116
+    }, 
+    "\u00d9": {
+        "contRank": 8, 
+        "nodeRank": 22
+    }, 
+    "Z": {
+        "contRank": 59, 
+        "nodeRank": 36
+    }, 
+    "\u00e1": {
+        "contRank": 3, 
+        "nodeRank": 19
+    }, 
+    "b": {
+        "contRank": 47, 
+        "nodeRank": 79
+    }, 
+    "\u00e5": {
+        "contRank": 29, 
+        "nodeRank": 34
+    }, 
+    "f": {
+        "contRank": 56, 
+        "nodeRank": 38
+    }, 
+    "\u00e9": {
+        "contRank": 50, 
+        "nodeRank": 46
+    }, 
+    "j": {
+        "contRank": 43, 
+        "nodeRank": 65
+    }, 
+    "\u00ed": {
+        "contRank": 27, 
+        "nodeRank": 12
+    }, 
+    "n": {
+        "contRank": 98, 
+        "nodeRank": 125
+    }, 
+    "\u00f1": {
+        "contRank": 14, 
+        "nodeRank": 27
+    }, 
+    "r": {
+        "contRank": 78, 
+        "nodeRank": 54
+    }, 
+    "\u00f5": {
+        "contRank": 57, 
+        "nodeRank": 33
+    }, 
+    "v": {
+        "contRank": 111, 
+        "nodeRank": 123
+    }, 
+    "z": {
+        "contRank": 63, 
+        "nodeRank": 131
+    }, 
+    "!": {
+        "contRank": 30, 
+        "nodeRank": 43
+    }, 
+    "%": {
+        "contRank": 23, 
+        "nodeRank": 18
+    }, 
+    ")": {
+        "contRank": 28, 
+        "nodeRank": 28
+    }, 
+    "-": {
+        "contRank": 84, 
+        "nodeRank": 76
+    }, 
+    "1": {
+        "contRank": 97, 
+        "nodeRank": 107
+    }, 
+    "\u00f2": {
+        "contRank": 15, 
+        "nodeRank": 5
+    }, 
+    "5": {
+        "contRank": 136, 
+        "nodeRank": 136
+    }, 
+    "9": {
+        "contRank": 108, 
+        "nodeRank": 62
+    }, 
+    "=": {
+        "contRank": 106, 
+        "nodeRank": 94
+    }, 
+    "A": {
+        "contRank": 75, 
+        "nodeRank": 133
+    }, 
+    "\u00c2": {
+        "contRank": 132, 
+        "nodeRank": 81
+    }, 
+    "E": {
+        "contRank": 66, 
+        "nodeRank": 60
+    }, 
+    "\u00c6": {
+        "contRank": 127, 
+        "nodeRank": 108
+    }, 
+    "I": {
+        "contRank": 117, 
+        "nodeRank": 104
+    }, 
+    "\u00ca": {
+        "contRank": 124, 
+        "nodeRank": 66
+    }, 
+    "M": {
+        "contRank": 92, 
+        "nodeRank": 121
+    }, 
+    "\u00ce": {
+        "contRank": 112, 
+        "nodeRank": 109
+    }, 
+    "Q": {
+        "contRank": 107, 
+        "nodeRank": 88
+    }, 
+    "\u00d2": {
+        "contRank": 33, 
+        "nodeRank": 49
+    }, 
+    "U": {
+        "contRank": 102, 
+        "nodeRank": 64
+    }, 
+    "\u00d6": {
+        "contRank": 44, 
+        "nodeRank": 63
+    }, 
+    "Y": {
+        "contRank": 104, 
+        "nodeRank": 85
+    }, 
+    "\u00da": {
+        "contRank": 10, 
+        "nodeRank": 7
+    }, 
+    "\u00de": {
+        "contRank": 0, 
+        "nodeRank": 1
+    }, 
+    "a": {
+        "contRank": 55, 
+        "nodeRank": 50
+    }, 
+    "\u00e2": {
+        "contRank": 26, 
+        "nodeRank": 48
+    }, 
+    "e": {
+        "contRank": 53, 
+        "nodeRank": 59
+    }, 
+    "\u00e6": {
+        "contRank": 40, 
+        "nodeRank": 39
+    }, 
+    "i": {
+        "contRank": 62, 
+        "nodeRank": 61
+    }, 
+    "\u00ea": {
+        "contRank": 51, 
+        "nodeRank": 47
+    }, 
+    "m": {
+        "contRank": 96, 
+        "nodeRank": 111
+    }, 
+    "\u00ee": {
+        "contRank": 25, 
+        "nodeRank": 6
+    }, 
+    "q": {
+        "contRank": 82, 
+        "nodeRank": 135
+    }, 
+    "\u1ef2": {
+        "contRank": 6, 
+        "nodeRank": 3
+    }, 
+    "u": {
+        "contRank": 88, 
+        "nodeRank": 100
+    }, 
+    "y": {
+        "contRank": 48, 
+        "nodeRank": 40
+    }
+}

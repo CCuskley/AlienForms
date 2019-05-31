@@ -1,0 +1,98 @@
+@font-face {
+  font-family:"Ferro";
+  src:url("../assets/bk1.otf") format("opentype");
+}
+
+p {
+  font-size:15px;
+}
+
+#taskContainer {
+  padding-top:1rem;
+}
+
+.ferroDisplay, #discFerros {
+  font-family:"Ferro";
+  font-size:80px;
+}
+
+.ferroOutput {
+  height:150px;
+}
+
+.posFeedback {
+  color:green;
+  padding:10px;
+  font-size:2em;
+}
+
+.negFeedback {
+  size:40px;
+  color:green;
+  padding:10px;
+
+}
+
+.ferroPalette{
+  min-width:200px;
+}
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 90px;
+  top:-5px;
+  color: #2E3D48;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+
+

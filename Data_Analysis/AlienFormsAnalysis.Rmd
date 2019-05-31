@@ -1,0 +1,206 @@
+---
+title: "AlienFormsAnalysis"
+author: "Christine Cuskley"
+date: "29/05/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(ggplot2)
+require(lme4)
+require(tidyverse)
+```
+
+## Reading in the data
+
+First we will read in the data:
+
+```{r echo=FALSE}
+
+ferrodata<-read.csv("FerroSeqData_Long.tsv",header=T, sep="\t")
+
+```
+
+Note that this is in maximally long form: rach row of the datafile is a single character from a single sequence. Also note this file is tab separated (.tsv) and not comma separated. This is important for this dataset since the comma character is actually a Ferro (i.e., it forms part of the responses).
+
+###File columns
+This explains the colums in the datafile. 
+```{r}
+head(ferrodata)
+```
+
+The Participant and Identifier columns are unique for each chain/generation. While they are redundant, the Participant column has the participant's random string identifier, while the Indentifier column is parseable for understanding the condtion (easy - large articulation spaces, or hard - small articulation spaces), generation (the number following GEN_ ), and chain (which are uniquely lettered). Trial indicates the order in which the sequence was presented to a participant (and thus is blank for the EXPERIMENTER Generation, which is coded as 1 in the Generation Column). The sequence trace allows the trace of a particular sequence over generations, and can be combined with SequencePosition to reconstruct a trial. The TargetCharacter (ProducedCharacter) shows the unicode character associated with the target (produced) Ferro. T.x/T.y is the centre coordinates for a target, while P.x/P.y indicates the location of a click. Note that where TargetCharacter is the same as the ProducedCharacter, the CharError is 0, even if T.x/T.y is not identical to P.x/P.y - this indicates that the participant clicked inside the polygon, but not on the exact center. Where the target and production was not the same, error (CharError) was determined as the distance between P.x/P.y and the nearest edge of the polygon associated with the target. These distances were calculated using the shapely package in Python - code for this is included in the GitHub repository. This leaves the CharRT column, which indicates the participant's reaction time for that Character (this data was not analysed, in part because these values are not likely to be accurate having been collected online).
+
+
+
+##Linear models
+
+Analyses were performed as follows (from the main paper):
+
+"Each model evaluated whether the relevant measure changed meaningfully over generations, and if there was any meaningful difference between conditions. Using the method outlined in detail in Winter and Weiling (2016), each dependent measure was tested as a separate outcome variable, with generation and condition as fixed effect predictors (including the interaction between these). Condition was deviation coded, and generation was rescaled to zero. Random effects were included for trial number and participant, and random uncorrelated slopes and intercepts were included for generation and chain. Each model was fit using the lme4 package (Bates, Maechler, Bolker, & Walker, 2014), and used the step( )function in the lmerTest() package (Kuznetsova, Brockhoff, & Christensen, 2018) to optimize model fit and simplicity.  This model was then tested against the null model usinganova()comparison, and significance values were obtained using the354lmerTestpackage (Kuznetsova et al., 2018) with the default Satterthwaite’s method. Finally, Marginal (fixed effect) and conditional (combined fixed and random effects) R2values were estimated using the sem.model.fits() function in the piecewiseSEM package (Lefcheck, 2016)."
+
+Note in particular that there is a conflict between the piecewiseSEM package and lmerTest. As a result, the initial models were specified using lmerTest, and then evaluated using the step() function. The preferred model recommended by the step() function was then compared to a null model. The final model had to be re-specified using lme4 after detaching lmerTest to use piecewiseSEM to calculate the marginal and conditional R squared values.
+
+###Error analysis
+
+
+```{r}
+require(lme4)
+require(lmerTest)
+
+
+#mean the error by trial for each participant,remove the initial experimenter specified generation
+ferro_error<-ferrodata %>% 
+  group_by(Participant, Trial, Chain, Condition, Generation) %>%
+  summarise(SeqError=mean(CharError)) %>% 
+  filter(Generation>1)
+
+
+
+#rescale generation to zero
+ferro_error$Generation<-ferro_error$Generation-2
+
+#deviation code condtion
+contrasts(ferro_error$Condition)=contr.sum(2)
+
+#run the hypothetical model with lmerTest
+error.init.model<-lmer(SeqError~Condition*Generation+(1|Participant)+(1|Trial)+(0+Generation|Chain),contrasts=list(Condition=contr.sum),data=ferro_error)
+steptest<-step(error.init.model)
+steptest
+
+```
+
+```{r}
+#remove complexity that doesn't improve fit using recommendation from step()
+error.model<-lmer(SeqError~Condition*Generation+(1|Participant)+(0+Generation|Chain), contrasts=list(Condition=contr.sum), data=ferro_error)
+#create null model (random effects only)
+error.null<-lmer(SeqError~(1|Participant)+(0+Generation|Chain),data=ferro_error)
+#compare final model to null model
+nultest<-anova(error.model, error.null)
+nultest
+```
+
+```{r}
+#detach lmerTest to use piecewiseSEM
+detach("package:lmerTest",unload=TRUE)
+require(piecewiseSEM)
+
+#re-do model in lme4 for sem.model.fits()
+error.model<-lmer(SeqError~Condition*Generation+(1|Participant)+(0+Generation|Chain), contrasts=list(Condition=contr.sum), data=ferro_error)
+
+#obtain r squared values
+modfit<-sem.model.fits(error.model)
+modfit
+
+```
+
+###Entropy analysis
+
+```{r}
+require(tidyverse)
+require(entropy)
+#library(piecewiseSEM)
+#detach("pacakge:piecewiseSEM",unload=TRUE)
+require(lmerTest)
+
+
+#add normalised area for each produced character (polygon production area, included in data file, divided by area of whole palette, 360 x 360)
+ferrodata$CharProbability<-ferrodata$ProductionArea/129600
+
+#add counts of each character by chain/generation/condition
+ferro_probs<-ferrodata %>%
+  group_by(Generation, Chain, Condition, ProducedCharacter,Participant) %>%
+  count(ProducedCharacter)
+#use counts to calculate entropy of set of Ferros by Genration/Chain/Condition (i.e., by participant)
+#Note use of log2 - here entropy is expressed in bits (not nats)
+ferro_ent<-ferro_probs %>%
+  group_by(Generation,Chain,Condition,Participant) %>%
+  summarise(Entropy=entropy(n, unit="log2"))
+
+#rescale generation to zero
+ferro_ent$Generation<-ferro_ent$Generation-1
+
+#deviation code condtion
+contrasts(ferro_ent$Condition)=contr.sum(2)
+
+#run the hypothetical model with lmerTest
+ent.init.model<-lmer(Entropy~Condition*Generation+(1|Chain)+(0+Generation|Chain),contrasts=list(Condition=contr.sum),data=ferro_ent)
+steptest<-step(ent.init.model)
+steptest
+#summary(ent.init.model)
+
+```
+Note the the "variable 'Condition' is absent" error occurs when running the step() function because where the fixed effect of condition is dropped (which did not occur for the Error model), the contrasts parameter is no longer meaningful. The step() function here recommends dropping all fixed effects and only keeping the random uncorrelated slopes for generation and chain. In other words, neither condition nor generation significantly predicts changes in entropy within the task.
+
+```{r}
+
+ent.null<-lmer(Entropy~ (1|Chain)+(0+Generation|Chain),data=ferro_ent)
+nulltest<-anova(ent.init.model, ent.null)
+nulltest
+```
+This is confirmed by comparison with a null model as above.
+
+
+###Surprisal analysis
+
+```{r}
+require(lmerTest)
+ferrodata$CharProbability<-ferrodata$ProductionArea/129600
+ferrodata$Surprisal<-log2(1/ferrodata$CharProbability)
+
+#remove initial sequences
+ferrodata<-ferrodata%>%filter(Generation>1)
+
+#rescale generation to 0
+ferrodata$Generation<-ferrodata$Generation-2
+
+#deviation code condtion
+contrasts(ferrodata$Condition)=contr.sum(2)
+
+surp.init.model<-lmer(Surprisal~Condition*Generation+(1|Participant)+(1|Trial)+(0+Generation|Chain),contrasts=list(Condition=contr.sum),data=ferrodata)
+steptest<-step(surp.init.model)
+steptest
+
+
+```
+
+```{r}
+
+surp.model<-lmer(Surprisal~Condition+(1|Participant)+(0+Generation|Chain),contrasts=list(Condition=contr.sum),data=ferrodata)
+summary(surp.model)
+surp.null<-lmer(Surprisal~(1|Participant)+(0+Generation|Chain),data=ferrodata)
+nulltest<-anova(surp.model, surp.null)
+nulltest
+```
+```{r}
+#detach lmerTest to use piecewiseSEM
+detach("package:lmerTest",unload=TRUE)
+require(piecewiseSEM)
+require(lme4)
+
+
+#re-do model in lme4 for sem.model.fits()
+surp.model<-lmer(Surprisal~Generation*Condition+(1|Participant)+(0+Generation|Chain),data=ferrodata)
+
+#obtain r squared values
+modfit<-sem.model.fits(surp.null)
+modfit
+
+```
+```{r}
+ferrodata<-read.csv("FerroSeqData_Long.tsv",header=T, sep="\t")
+
+ferrodata$CharProbability<-ferrodata$ProductionArea/129600
+require(tidyverse)
+#add counts of each character by trial
+ferrotrialprobs<-ferrodata %>%
+  filter(Generation>1)%>%
+  group_by(Generation, Chain, Condition, ProducedCharacter,Trial) %>%
+  count(ProducedCharacter)
+
+
+head(ferrotrialprobs)
+#use counts to calculate entropy of set of Ferros by Genration/Chain/Condition (i.e., by participant)
+```
+
