@@ -1,5 +1,5 @@
 # AlienForms
-Code for Researcher (2019), Alien Forms for Alien Language
+Code for Cuskley (2019), Alien Forms for Alien Language
 
 The code released contains two folders. 
 
@@ -16,7 +16,7 @@ This folder contains HTML, JavaScript, and CSS for the palette at the centre of 
 
 Note that this palette is not the full task, but only the 2D palette used to produce forms during the main part of the task. As such, this code doesn't include detail about storing and saving participant responses, but this was done with mLab and MongoDB (https://mlab.com) via FlaskSocketio (https://flask-socketio.readthedocs.io/en/latest/). To see a demo version of the original task in full, see here: https://bit.ly/FerroSeqDemo
 
-Also note that this palette does not use the Ferro forms used in the original task, but a different, freely available alien font (https://www.fontspace.com/fontepx/bk1). The font cannot be freely released, but can be purchased from the creator, Craig Ward. Should you wish to use the font for research purposes, contact the author of Researcher (2019), who has permission to distribute the font free of charge for use in scholarly research.
+Also note that this palette does not use the Ferro forms used in the original task, but a different, freely available alien font (https://www.fontspace.com/fontepx/bk1). The font cannot be freely released, but can be purchased from the creator, Craig Ward. Should you wish to use the font for research purposes, contact the author of Cuskley (2019), who has permission to distribute the font free of charge for use in scholarly research.
 
-While the palette displays a different font, the spatial arrangement is the same as described in Researcher (2019), and based on the node/contour values of the Ferro font (i.e., not on visual properties of the b1k font).
+While the palette displays a different font, the spatial arrangement is the same as described in Cuskley (2019), and based on the node/contour values of the Ferro font (i.e., not on visual properties of the b1k font).
 
