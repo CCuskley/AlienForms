@@ -14,7 +14,7 @@ The code released contains two folders.
 
 This folder contains HTML, JavaScript, and CSS for the palette at the centre of the task. It is set up to be deployed directly to Heroku - for further information, see here: https://devcenter.heroku.com/articles/getting-started-with-python. 
 
-Note that this palette is not the full task, but only the 2D palette used to produce forms during the main part of the task. As such, this code doesn't include detail about storing and saving participant responses, but this was done with mLab and MongoDB (https://mlab.com) via FlaskSocketio (https://flask-socketio.readthedocs.io/en/latest/). To see a demo version of the original task in full, see here: https://bit.ly/FerroSeqDemo
+Note that this palette is not the full task, but only the 2D palette used to produce forms during the main part of the task. As such, this code doesn't include detail about storing and saving participant responses, but this was done with mLab and MongoDB (https://mlab.com) via FlaskSocketio (https://flask-socketio.readthedocs.io/en/latest/). For a demo version of the original task in full, see here: https://bit.ly/FerroSeqDemo
 
 Also note that this palette does not use the Ferro forms used in the original task, but a different, freely available alien font (https://www.fontspace.com/fontepx/bk1). The font cannot be freely released, but can be purchased from the creator, Craig Ward. Should you wish to use the font for research purposes, contact the author of Cuskley (2019), who has permission to distribute the font free of charge for use in scholarly research.
 
