@@ -1,5 +1,5 @@
 # AlienForms
-Code for Cuskley (2019), Alien Forms for Alien Language
+Code for Cuskley, C. (2019). Alien forms for alien language: investigating novel form spaces in cultural evolution. Palgrave Comunications, 5(1), 1-15 https://doi.org/10.1057/s41599-019-0299-5
 
 The code released contains two folders. 
 
